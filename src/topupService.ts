@@ -27,7 +27,7 @@ export async function checkAndTopUp(): Promise<void> {
   try {
     const config = await readConfig();
     const minBalanceWei = ethers.parseUnits(config.minBalance.toString(), 18);
-    const topUpAmountWei = ethers.parseUnits(config.topupAmount.toString(), 18);
+    // const topUpAmountWei = ethers.parseUnits(config.topupAmount.toString(), 18);
 
     const provider = new ethers.JsonRpcProvider(RPC_URL);
     const keeperWallet = new ethers.Wallet(KEEPER_PRIVATE_KEY, provider);
@@ -48,7 +48,7 @@ export async function checkAndTopUp(): Promise<void> {
       const aaveInterface = new ethers.Interface(aavePoolAbi);
       const withdrawData = aaveInterface.encodeFunctionData("withdraw", [
         EURE_ADDRESS,
-        topUpAmountWei,
+        minBalanceWei - currentBalance,
         GNOSIS_PAY_ADDRESS,
       ]);
 
