@@ -53,6 +53,9 @@ export async function checkAndTopUp(): Promise<void> {
       ]);
 
       console.log("Submitting transaction through Zodiac Roles Modifier...");
+      const feeData = await provider.getFeeData();
+      const priorityFee = (feeData.maxPriorityFeePerGas ?? 0n) + ethers.parseUnits("2", "gwei");
+      const maxFee = (feeData.maxFeePerGas ?? 0n) + ethers.parseUnits("2", "gwei");
       const tx = await rolesContract.execTransactionWithRole(
         AAVE_POOL_ADDRESS,
         0,
@@ -60,6 +63,11 @@ export async function checkAndTopUp(): Promise<void> {
         0,
         ROLE_KEY,
         true,
+        {
+          maxPriorityFeePerGas: priorityFee,
+          maxFeePerGas: maxFee,
+          gasLimit: 500000n
+        }
       );
 
       console.log(`Transaction submitted! Hash: ${tx.hash}`);

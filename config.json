@@ -1,4 +1,4 @@
 {
-  "minBalance": 50,
+  "minBalance": 100,
   "checkIntervalMs": 900000
 }
