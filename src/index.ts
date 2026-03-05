@@ -26,6 +26,7 @@ async function start() {
   configEvents.on("configUpdated", (newConfig) => {
     console.log("Config updated, adjusting daemon interval...");
     setDaemonInterval(newConfig.checkIntervalMs);
+    checkAndTopUp();
   });
 }
 
