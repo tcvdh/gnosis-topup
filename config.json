@@ -1,0 +1,5 @@
+{
+  "minBalance": 50,
+  "topupAmount": 100,
+  "checkIntervalMs": 900000
+}

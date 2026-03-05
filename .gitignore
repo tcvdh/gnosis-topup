@@ -1,0 +1,32 @@
+# --- Dependencies ---
+node_modules/
+
+# --- Build Output ---
+dist/
+build/
+
+# --- Secrets & Environment (CRITICAL) ---
+# Because you are using dotenvx, your .env file is encrypted and CAN be committed safely.
+# However, the .env.keys file contains the master decryption password and MUST be ignored.
+.env.keys
+
+# (Optional) Uncomment the line below if you decide not to commit your encrypted .env file at all
+# .env
+
+# --- Application State ---
+# Ignore the live configuration database so pulling updates doesn't overwrite your production settings
+# config.json
+
+# --- Logs ---
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# --- Editor & OS Files ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
